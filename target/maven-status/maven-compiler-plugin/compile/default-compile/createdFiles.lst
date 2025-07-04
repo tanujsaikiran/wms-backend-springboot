@@ -1,0 +1,7 @@
+com\pbh\wms\controller\OrderController.class
+com\pbh\wms\entity\Order.class
+com\pbh\wms\repository\InventoryRepository.class
+com\pbh\wms\controller\InventoryController.class
+com\pbh\wms\repository\OrderRepository.class
+com\pbh\wms\entity\Inventory.class
+com\pbh\wms\WmsApplication.class
