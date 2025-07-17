@@ -1,3 +1,5 @@
+com\pbh\wms\controller\WebConfig.class
+com\pbh\wms\controller\WebConfig$1.class
 com\pbh\wms\controller\OrderController.class
 com\pbh\wms\entity\Order.class
 com\pbh\wms\repository\InventoryRepository.class
