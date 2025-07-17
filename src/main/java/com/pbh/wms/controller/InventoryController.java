@@ -49,7 +49,7 @@ public class InventoryController {
 	
 
     @DeleteMapping("/inventory/{id}")
-    public ResponseEntity<Void> deleteInventory(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteInventory(@PathVariable("id") Long id) {
         if (repo.existsById(id)) {
         	repo.deleteById(id);
             return ResponseEntity.noContent().build();

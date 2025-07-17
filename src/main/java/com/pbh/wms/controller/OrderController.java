@@ -52,7 +52,7 @@ public class OrderController {
 
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteOrder(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteOrder(@PathVariable("id") Long id) {
         if (rrepo.existsById(id)) {
             rrepo.deleteById(id);
             return ResponseEntity.noContent().build();
