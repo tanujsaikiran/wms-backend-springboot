@@ -27,6 +27,13 @@ public class WmsApplication {
             inv.setLocation("Rack A1");
             inv.setLastUpdated(LocalDate.now());
             inventoryRepo.save(inv);
+            
+            Inventory inv2 = new Inventory();
+            inv.setItemName("DESKTOP");
+            inv.setQuantity(1200);
+            inv.setLocation("Rack B1");
+            inv.setLastUpdated(LocalDate.now());
+            inventoryRepo.save(inv2);
 
             Order order = new Order();
             order.setOrderNumber("ORD-1001");
@@ -35,6 +42,15 @@ public class WmsApplication {
             order.setOrderDate(LocalDate.now());
             order.setStatus("PENDING");
             orderRepo.save(order);
+            
+            Order order2 = new Order();
+            order.setOrderNumber("ORD-1002");
+            order.setItemName("DESKTOP");
+            order.setQuantity(6);
+            order.setOrderDate(LocalDate.now());
+            order.setStatus("COMPLETED");
+            orderRepo.save(order2);
         };
-    }		
+    }
+    
 }	
