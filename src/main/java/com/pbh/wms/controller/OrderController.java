@@ -2,6 +2,7 @@ package com.pbh.wms.controller;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.pbh.wms.entity.Inventory;
 import com.pbh.wms.entity.Order;
 import com.pbh.wms.repository.OrderRepository;
 
@@ -37,18 +39,14 @@ public class OrderController {
     }	
 
     @PutMapping("/{id}")
-    public ResponseEntity<Order> updateOrder(@PathVariable Long id, @RequestBody Order updatedOrder) {
-        return rrepo.findById(id)
-                .map(order -> {
-                    order.setOrderNumber(updatedOrder.getOrderNumber());
-                    order.setItemName(updatedOrder.getItemName());
-                    order.setQuantity(updatedOrder.getQuantity());
-                    order.setOrderDate(updatedOrder.getOrderDate());
-                    order.setStatus(updatedOrder.getStatus());
-                    Order savedOrder = rrepo.save(order);
-                    return ResponseEntity.ok(savedOrder); 
-                })
-                .orElseGet(() -> ResponseEntity.notFound().build());
+    public ResponseEntity<Order> updateorder(@RequestBody Order order) {
+        Optional<Order> existing = rrepo.findById(order.getId());
+        if (existing.isPresent()) {
+            Order updated = rrepo.save(order);
+            return ResponseEntity.ok(updated);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
 
